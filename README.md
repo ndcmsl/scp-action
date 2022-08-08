@@ -2,8 +2,6 @@
 
 [GitHub Action](https://github.com/features/actions) for copying files and artifacts via SSH.
 
-[![Actions Status](https://github.com/appleboy/scp-action/workflows/scp%20files/badge.svg)](https://github.com/appleboy/scp-action/actions)
-
 **Important**: Only support **Linux** [docker](https://www.docker.com/) container.
 
 ## Usage
@@ -21,7 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: copy file via ssh password
-      uses: appleboy/scp-action@master
+      uses: ndcmsl/scp-action@main
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
@@ -51,7 +49,7 @@ See the [action.yml](./action.yml) file for more detail information.
 * strip_components - remove the specified number of leading path elements.
 * overwrite - use `--overwrite` flag with tar
 * tar_tmp_path - temporary path for tar file on the dest host
-* use_insecure_cipher - include more ciphers with use_insecure_cipher (see [#15](https://github.com/appleboy/scp-action/issues/15))
+* use_insecure_cipher - include more ciphers with use_insecure_cipher 
 
 SSH Proxy Setting:
 
@@ -64,7 +62,7 @@ SSH Proxy Setting:
 * proxy_key - content of ssh proxy private key.
 * proxy_key_path - path of ssh proxy private key
 * proxy_fingerprint - fingerprint SHA256 of the host public key, default is to skip verification
-* proxy_use_insecure_cipher - include more ciphers with use_insecure_cipher (see [#15](https://github.com/appleboy/scp-action/issues/15))
+* proxy_use_insecure_cipher - include more ciphers with use_insecure_cipher 
 
 ## Setting up a SSH Key
 
@@ -135,7 +133,7 @@ Copy file via a SSH password:
 
 ```yaml
 - name: copy file via ssh password
-  uses: appleboy/scp-action@master
+  uses: ndcmsl/scp-action@main
   with:
     host: example.com
     username: foo
@@ -149,7 +147,7 @@ Copy file via a SSH key:
 
 ```yaml
 - name: copy file via ssh key
-  uses: appleboy/scp-action@master
+  uses: ndcmsl/scp-action@main
   with:
     host: ${{ secrets.HOST }}
     username: ${{ secrets.USERNAME }}
@@ -163,7 +161,7 @@ Example configuration for ignore list:
 
 ```yaml
 - name: copy file via ssh key
-  uses: appleboy/scp-action@master
+  uses: ndcmsl/scp-action@main
   with:
     host: ${{ secrets.HOST }}
     username: ${{ secrets.USERNAME }}
@@ -176,7 +174,7 @@ Example configuration for ignore list:
 Example configuration for multiple servers:
 
 ```diff
-  uses: appleboy/scp-action@master
+  uses: ndcmsl/scp-action@main
   with:
 -   host: "example.com"
 +   host: "foo.com,bar.com"
@@ -191,7 +189,7 @@ Remove the specified number of leading path elements:
 
 ```yaml
 - name: remove the specified number of leading path elements
-  uses: appleboy/scp-action@master
+  uses: ndcmsl/scp-action@main
   with:
     host: ${{ secrets.HOST }}
     username: ${{ secrets.USERNAME }}
@@ -223,7 +221,7 @@ Protecting a Private Key. The purpose of the passphrase is usually to encrypt th
 
 ```diff
   - name: ssh key with passphrase
-    uses: appleboy/scp-action@master
+    uses: ndcmsl/scp-action@main
     with:
       host: ${{ secrets.HOST }}
       username: ${{ secrets.USERNAME }}
